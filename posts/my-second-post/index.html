@@ -45,7 +45,7 @@ The code first asks for how many players and for the name for each player.">
 
 <meta itemprop="datePublished" content="2019-05-31T02:59:35&#43;01:00" />
 <meta itemprop="dateModified" content="2019-05-31T02:59:35&#43;01:00" />
-<meta itemprop="wordCount" content="469">
+<meta itemprop="wordCount" content="489">
 
 
 
@@ -119,128 +119,140 @@ The code first asks for how many players and for the name for each player."/>
 
 <p>The code first asks for how many players and for the name for each player.</p>
 
-<p>num_play = input( &ldquo;Numerical number of players: &ldquo;)
-num_play = int(num_play)</p>
+<pre><code>num_play = input( &quot;Numerical number of players: &quot;)
+num_play = int(num_play)
 
-<p>names = []</p>
+names = []
 
-<p>for number in range( 0, num_play ):
-    reply = input(&ldquo;Name: &ldquo;)
-    names.append(reply)</p>
+for number in range( 0, num_play ):
+    reply = input(&quot;Name: &quot;)
+names.append(reply)
+</code></pre>
 
 <p>We then shuffle the cards and then assign it to each player without repeats. We then build a dictionary.</p>
 
-<p>picks = []</p>
+<pre><code>picks = []
 
-<p>random.shuffle( cards )</p>
+random.shuffle( cards )
 
-<p>for person in names:
-    hand = cards[0:5]
-    picks.append(hand)
-    del cards[0:5]</p>
+for person in names:
+        hand = cards[0:5]
+        picks.append(hand)
+        del cards[0:5]
 
-<p>dictionary = dict(zip(names, picks))</p>
+dictionary = dict(zip(names, picks))
+</code></pre>
 
 <p>Then, we do our comparison. We replace the loser in the comparison by going to the index next to them and maintaining the index of the winner.</p>
 
-<p>winner = []</p>
+<pre><code>winner = []
 
-<p>index_a = 0
-index_b = index_a + 1</p>
+index_a = 0
+index_b = index_a + 1
 
-<p>for i in dictionary:
+for i in dictionary:
     a = list(dictionary.values())
-    a = a[index_a]</p>
+        a = a[index_a]
 
-<pre><code>b = list(dictionary.values())
-b = b[index_b]
+        b = list(dictionary.values())
+        b = b[index_b]
 
-if max(a) &gt; max (b):                                            #winner is person a
+    if max(a) &gt; max (b):                                            #winner is person a
 
-    y = list( dictionary.keys() )
-    y = y[ index_a ]
+            y = list( dictionary.keys() )
+            y = y[ index_a ]
 
-    win = y
+            win = y
 
-    if len( dictionary ) &gt; 2:
-        index_b = index_b + 1
-    else:
-        index_b = index_b
-
-elif max(a) &lt; max(b):                                          #winner is person b
-
-    x = list( dictionary.keys() )
-    x = x[ index_b ]
-
-    win = x
-    index_a = index_b
-
-    if len( dictionary ) &gt; 2:
-        index_a = index_b + 1
-    else:
-        index_a = index_b
-
-
-elif max(a) == max(b) :                                         #it's a tie
-
-    r = a.copy()
-    s = b.copy()
-
-    while ( max(r) == max(s) ):                                #remove duplicates from the list then analyze it
-        m = r.index( max(r) )
-        n = s.index( max(r) )
-
-        r.pop(m)
-        s.pop(n)
-
-    if max(r) &gt; max (s):
-
-        y = list( dictionary.keys() )
-        y = y[ index_a ]
-
-        win = y
-
-        if len( dictionary ) &gt; 2:
-            index_b = index_b + 1
+            if len( dictionary ) &gt; 2:
+                index_b = index_b + 1
         else:
-            index_b = index_b
+                index_b = index_b
 
-    elif max(r) &lt; max(s):
+    elif max(a) &lt; max(b):                                          #winner is person b
 
-        x = list( dictionary.keys() )
+            x = list( dictionary.keys() )
         x = x[ index_b ]
 
-        win = x
-        index_a = index_b
+            win = x
+            index_a = index_b
 
-    elif r == [] or s == []:
-        win = &quot;Nobody&quot;
+            if len( dictionary ) &gt; 2:
+            index_a = index_b + 1
+            else:
+                index_a = index_b
+
+
+    elif max(a) == max(b) :                                         #it's a tie
+
+            r = a.copy()
+            s = b.copy()
+
+            while ( max(r) == max(s) ):                                #remove duplicates from the list then analyze it
+                    m = r.index( max(r) )
+                    n = s.index( max(r) )
+
+                    r.pop(m)
+                    s.pop(n)
+
+                    if len(r) == 1 and len(s) == 1:
+                        break
+
+            if max(r) &gt; max (s):
+
+                    y = list( dictionary.keys() )
+                    y = y[ index_a ]
+
+                    win = y
+
+                    if len( dictionary ) &gt; 2:
+                        index_b = index_b + 1
+                    else:
+                        index_b = index_b
+
+            elif max(r) &lt; max(s):
+
+                    x = list( dictionary.keys() )
+                    x = x[ index_b ]
+
+                    win = x
+                index_a = index_b
+
+            elif r == s:
+                    y = list( dictionary.keys() )
+                    y = y[ index_a ]
+
+                    x = list( dictionary.keys() )
+                    x = x[ index_b ]
+
+                    win = '{} and {}'.format(x, y) 
 </code></pre>
 
 <p>We then append the winner to a list and then convert it to a string. We then print the statement along with the cards each player was dealt.</p>
 
-<p>winner.append(win)</p>
+<pre><code>winner.append(win)
 
-<p>chicken_dinner = &ldquo;.join(winner)</p>
+winning_player = ''.join(winner)
 
-<p>print( &ldquo;The following hands are: &ldquo;, dictionary )
- print()</p>
 
-<p>print(chicken_dinner ,&ldquo;wins.&rdquo; )</p>
+print( &quot;The following hands are: &quot;, dictionary )
+print()
+print(winning_player ,&quot;wins.&quot; )
+</code></pre>
 
 <p>Example output:</p>
 
-<p>Numerical number of players: 5</p>
+<pre><code>Numerical number of players: 4
 
-<p>Name: a
-Name: b
-Name: c
-Name: d
-Name: e</p>
+Name: A
+Name: B
+Name: C
+Name: D
 
-<p>The following hands are:  {&lsquo;a&rsquo;: [2, 2, 11, 8, 7], &lsquo;b&rsquo;: [3, 5, 5, 10, 4], &lsquo;c&rsquo;: [13, 12, 9, 5, 7], &rsquo;d&rsquo;: [4, 8, 11, 11, 3], &lsquo;e&rsquo;: [6, 14, 6, 14, 8]}</p>
+The following hands are:  {'A': [4, 8, 5, 2, 9], 'B': [5, 13, 13, 13, 12], 'C': [9, 4, 8, 12, 11], 'D': [12, 3, 9, 4, 11]}
 
-<p>c wins.</p>
+B wins.
+</code></pre>
 <ul class="pa0">
   
 </ul>
