@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lara Sharma&#39;s Blog</title>
-    <link>http://example.org/</link>
+    <link>https://larasharma.github.io/</link>
     <description>Recent content on Lara Sharma&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 31 May 2019 02:59:35 +0100</lastBuildDate>
     
-	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://larasharma.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>My First Post</title>
-      <link>http://example.org/posts/my-first-post/</link>
+      <link>https://larasharma.github.io/posts/my-first-post/</link>
       <pubDate>Fri, 31 May 2019 02:59:35 +0100</pubDate>
       
-      <guid>http://example.org/posts/my-first-post/</guid>
+      <guid>https://larasharma.github.io/posts/my-first-post/</guid>
       <description>Wow, having such a great time in Lisbon</description>
     </item>
     
     <item>
       <title>My Second Post Yay</title>
-      <link>http://example.org/posts/my-second-post/</link>
+      <link>https://larasharma.github.io/posts/my-second-post/</link>
       <pubDate>Fri, 31 May 2019 02:59:35 +0100</pubDate>
       
-      <guid>http://example.org/posts/my-second-post/</guid>
+      <guid>https://larasharma.github.io/posts/my-second-post/</guid>
       <description>This is my second post!</description>
     </item>
     
