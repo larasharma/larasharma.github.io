@@ -29,29 +29,32 @@
     
 
     <meta property="og:title" content="poker_game.py" />
-<meta property="og:description" content="This is my second post!
-Here is the URL for my poker_game.py file: https://github.com/ix-ds-lisbon-s1-2019/week-1-project-larasharma.git" />
+<meta property="og:description" content="Here is the URL for my poker_game.py file: https://github.com/ix-ds-lisbon-s1-2019/week-1-project-larasharma.git
+My thoughts for building the code the way it is. The goal was to create a poker game between the user(s) and the computer. The computer is to deal each player 5 cards regardless of how many players they are as long as each one can get five cards.
+The code first asks for how many players and for the name for each player." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://larasharma.github.io/posts/my-second-post/" />
 <meta property="article:published_time" content="2019-05-31T02:59:35&#43;01:00"/>
 <meta property="article:modified_time" content="2019-05-31T02:59:35&#43;01:00"/>
 
 <meta itemprop="name" content="poker_game.py">
-<meta itemprop="description" content="This is my second post!
-Here is the URL for my poker_game.py file: https://github.com/ix-ds-lisbon-s1-2019/week-1-project-larasharma.git">
+<meta itemprop="description" content="Here is the URL for my poker_game.py file: https://github.com/ix-ds-lisbon-s1-2019/week-1-project-larasharma.git
+My thoughts for building the code the way it is. The goal was to create a poker game between the user(s) and the computer. The computer is to deal each player 5 cards regardless of how many players they are as long as each one can get five cards.
+The code first asks for how many players and for the name for each player.">
 
 
 <meta itemprop="datePublished" content="2019-05-31T02:59:35&#43;01:00" />
 <meta itemprop="dateModified" content="2019-05-31T02:59:35&#43;01:00" />
-<meta itemprop="wordCount" content="14">
+<meta itemprop="wordCount" content="416">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="poker_game.py"/>
-<meta name="twitter:description" content="This is my second post!
-Here is the URL for my poker_game.py file: https://github.com/ix-ds-lisbon-s1-2019/week-1-project-larasharma.git"/>
+<meta name="twitter:description" content="Here is the URL for my poker_game.py file: https://github.com/ix-ds-lisbon-s1-2019/week-1-project-larasharma.git
+My thoughts for building the code the way it is. The goal was to create a poker game between the user(s) and the computer. The computer is to deal each player 5 cards regardless of how many players they are as long as each one can get five cards.
+The code first asks for how many players and for the name for each player."/>
 
   </head>
 
@@ -110,9 +113,120 @@ Here is the URL for my poker_game.py file: https://github.com/ix-ds-lisbon-s1-20
       
     </header>
 
-    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>This is my second post!</p>
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Here is the URL for my poker_game.py file: <a href="https://github.com/ix-ds-lisbon-s1-2019/week-1-project-larasharma.git">https://github.com/ix-ds-lisbon-s1-2019/week-1-project-larasharma.git</a></p>
 
-<p>Here is the URL for my poker_game.py file: <a href="https://github.com/ix-ds-lisbon-s1-2019/week-1-project-larasharma.git">https://github.com/ix-ds-lisbon-s1-2019/week-1-project-larasharma.git</a></p>
+<p>My thoughts for building the code the way it is. The goal was to create a poker game between the user(s) and the computer. The computer is to deal each player 5 cards regardless of how many players they are as long as each one can get five cards.</p>
+
+<p>The code first asks for how many players and for the name for each player.</p>
+
+<p>num_play = input( &ldquo;Numerical number of players: &ldquo;)
+num_play = int(num_play)</p>
+
+<p>names = []</p>
+
+<p>for number in range( 0, num_play ):
+    reply = input(&ldquo;Name: &ldquo;)
+    names.append(reply)</p>
+
+<p>We then shuffle the cards and then assign it to each player without repeats. We then build a dictionary.</p>
+
+<p>picks = []</p>
+
+<p>random.shuffle( cards )</p>
+
+<p>for person in names:
+    hand = cards[0:5]
+    picks.append(hand)
+    del cards[0:5]</p>
+
+<p>dictionary = dict(zip(names, picks))</p>
+
+<p>Then, we do our comparison. We replace the loser in the comparison by going to the index next to them and maintaining the index of the winner.</p>
+
+<p>winner = []</p>
+
+<p>index_a = 0
+index_b = index_a + 1</p>
+
+<p>for i in dictionary:
+    a = list(dictionary.values())
+    a = a[index_a]</p>
+
+<pre><code>b = list(dictionary.values())
+b = b[index_b]
+
+if max(a) &gt; max (b):                                            #winner is person a
+
+    y = list( dictionary.keys() )
+    y = y[ index_a ]
+
+    win = y
+
+    if len( dictionary ) &gt; 2:
+        index_b = index_b + 1
+    else:
+        index_b = index_b
+
+elif max(a) &lt; max(b):                                          #winner is person b
+
+    x = list( dictionary.keys() )
+    x = x[ index_b ]
+
+    win = x
+    index_a = index_b
+
+    if len( dictionary ) &gt; 2:
+        index_a = index_b + 1
+    else:
+        index_a = index_b
+
+
+elif max(a) == max(b) :                                         #it's a tie
+
+    r = a.copy()
+    s = b.copy()
+
+    while ( max(r) == max(s) ):                                #remove duplicates from the list then analyze it
+        m = r.index( max(r) )
+        n = s.index( max(r) )
+
+        r.pop(m)
+        s.pop(n)
+
+    if max(r) &gt; max (s):
+
+        y = list( dictionary.keys() )
+        y = y[ index_a ]
+
+        win = y
+
+        if len( dictionary ) &gt; 2:
+            index_b = index_b + 1
+        else:
+            index_b = index_b
+
+    elif max(r) &lt; max(s):
+
+        x = list( dictionary.keys() )
+        x = x[ index_b ]
+
+        win = x
+        index_a = index_b
+
+    elif r == [] or s == []:
+        win = &quot;Nobody&quot;
+</code></pre>
+
+<p>We then append the winner to a list and then convert it to a string. We then print the statement along with the cards each player was dealt.</p>
+
+<p>winner.append(win)</p>
+
+<p>chicken_dinner = &ldquo;.join(winner)</p>
+
+<p>print( &ldquo;The following hands are: &ldquo;, dictionary )
+ print()</p>
+
+<p>print(chicken_dinner ,&ldquo;wins.&rdquo; )</p>
 <ul class="pa0">
   
 </ul>
