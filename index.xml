@@ -21,12 +21,13 @@
     </item>
     
     <item>
-      <title>My Second Post Yay</title>
+      <title>poker_game.py</title>
       <link>https://larasharma.github.io/posts/my-second-post/</link>
       <pubDate>Fri, 31 May 2019 02:59:35 +0100</pubDate>
       
       <guid>https://larasharma.github.io/posts/my-second-post/</guid>
-      <description>This is my second post!</description>
+      <description>This is my second post!
+Here is the URL for my poker_game.py file: https://github.com/ix-ds-lisbon-s1-2019/week-1-project-larasharma.git</description>
     </item>
     
   </channel>
